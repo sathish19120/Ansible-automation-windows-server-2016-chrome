@@ -1,0 +1,26 @@
+---
+- name: Install Google Chrome on Windows
+  hosts: windows
+  gather_facts: no
+  tasks:
+    - name: Ensure C:\Temp directory exists
+      ansible.builtin.win_file:
+        path: C:\Temp
+        state: directory
+
+    - name: Download Google Chrome installer
+      ansible.windows.win_get_url:
+        url: https://dl.google.com/chrome/install/latest/chrome_installer.exe
+        dest: C:\Temp\chrome_installer.exe
+        timeout: 30
+
+    - name: Install Google Chrome
+      ansible.windows.win_package:
+        path: C:\Temp\chrome_installer.exe
+        arguments: /silent /install
+        state: present
+
+    - name: Clean up installer
+      ansible.builtin.win_file:
+        path: C:\Temp\chrome_installer.exe
+        state: absent
