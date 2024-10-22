@@ -113,4 +113,3 @@ If successful, the response should be:
     "ping": "pong"
 }
 
-
