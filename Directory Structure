@@ -1,0 +1,5 @@
+windows-chrome-Ansible automation/
+│
+├── playbook.yml          # Ansible playbook to automate Chrome installation
+├── inventory.ini         # Inventory file for remote Windows hosts
+└── README.md             # Documentation about your project
